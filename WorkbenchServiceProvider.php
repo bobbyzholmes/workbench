@@ -12,20 +12,23 @@ class WorkbenchServiceProvider extends ServiceProvider {
 	 */
 	protected $defer = false;
 
+	public function boot() {
+		$this->publishes([
+			__DIR__.'/stubs/workbench.php' => config_path('workbench.php'),
+		]);
+	}
+
 	/**
 	 * Register the service provider.
 	 *
 	 * @return void
 	 */
-	public function register()
-	{
-		$this->app->singleton('package.creator', function($app)
-		{
+	public function register() {
+		$this->app->singleton('package.creator', function ($app) {
 			return new PackageCreator($app['files']);
 		});
 
-		$this->app->singleton('command.workbench', function($app)
-		{
+		$this->app->singleton('command.workbench', function ($app) {
 			return new WorkbenchMakeCommand($app['package.creator']);
 		});
 
@@ -37,9 +40,8 @@ class WorkbenchServiceProvider extends ServiceProvider {
 	 *
 	 * @return array
 	 */
-	public function provides()
-	{
-		return array('package.creator', 'command.workbench');
+	public function provides() {
+		return ['package.creator', 'command.workbench'];
 	}
 
 }
