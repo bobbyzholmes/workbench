@@ -33,6 +33,8 @@ class PackageCreator {
 		'PublicDirectory',
 		'TestDirectory',
 		'ServiceProvider',
+		'RoutesFile',
+		'PackageDirectories'
 	];
 
 	/**
@@ -168,6 +170,17 @@ class PackageCreator {
 	}
 
 	/**
+	 * Write the stub routes.php file for the package
+	 *
+	 * @param    \Illuminate\Workbench\Package $package
+	 * @param    string                        $directory
+	 * @return    void
+	 */
+	public function writeRoutesFile(Package $package, $directory) {
+		$this->files->put($directory . '/routes.php', '');
+	}
+
+	/**
 	 * Create the support directories for a package.
 	 *
 	 * @param  \Illuminate\Workbench\Package $package
@@ -178,9 +191,6 @@ class PackageCreator {
 		foreach (['config', 'lang', 'migrations', 'views'] as $support) {
 			$this->writeSupportDirectory($package, $support, $directory);
 		}
-
-		$this->writeSupportDirectory($package, '/' . $package->vendor . '/' . $package->name . '/Controllers', $directory);
-
 	}
 
 	/**
@@ -200,6 +210,30 @@ class PackageCreator {
 		$this->files->makeDirectory($path, 0777, true);
 
 		$this->files->put($path . '/.gitkeep', '');
+	}
+
+	/**
+	 * @param Package $package
+	 * @param         $directory
+	 */
+	public function writePackageDirectories(Package $package, $directory) {
+		foreach (['Controllers', 'Events', 'Composers'] as $dir) {
+			$this->writePackageDirectory($package, '/' . $package->vendor . '/' . $package->name . '/' . $dir, $directory);
+		}
+	}
+
+	/**
+	 * Write a specific support directory for the package.
+	 *
+	 * @param  \Illuminate\Workbench\Package $package
+	 * @param  string                        $support
+	 * @param  string                        $directory
+	 * @return void
+	 */
+	protected function writePackageDirectory(Package $package, $support, $directory) {
+		$path = $directory . '/' . $support;
+
+		$this->files->makeDirectory($path, 0777, true);
 	}
 
 	/**
