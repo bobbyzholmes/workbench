@@ -1,5 +1,5 @@
 {
-    "name": "bobbyzholmes/workbench",
+    "name": "illuminate/workbench",
     "description": "Folk of the Illuminate Workbench package.",
     "license": "MIT",
     "authors": [
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Bobbyzholmes\\Workbench\\": ""
+            "Illuminate\\Workbench\\": ""
         }
     },
     "extra": {

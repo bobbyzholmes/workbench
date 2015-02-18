@@ -1,4 +1,4 @@
-<?php namespace Bobbyzholmes\Workbench;
+<?php namespace Illuminate\Workbench;
 
 class Package {
 

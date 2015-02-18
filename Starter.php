@@ -1,4 +1,4 @@
-<?php namespace Bobbyzholmes\Workbench;
+<?php namespace Illuminate\Workbench;
 
 use Symfony\Component\Finder\Finder;
 use Illuminate\Filesystem\Filesystem;
