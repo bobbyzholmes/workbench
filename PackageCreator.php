@@ -177,7 +177,28 @@ class PackageCreator {
 	 * @return    void
 	 */
 	public function writeRoutesFile(Package $package, $directory) {
-		$this->files->put($directory . '/routes.php', '');
+		$stub = $this->getRouteStub($package);
+
+		$file = $directory . '/routes.php';
+
+		$this->files->put($file, $stub);
+	}
+
+	/**
+	 * Format the routes stub file
+	 * @param Package $package
+	 * @return string
+	 */
+	protected function getRouteStub(Package $package) {
+		return $this->formatPackageStub($package, $this->getRouteFile());
+	}
+
+	/**
+	 * Get the raw stub file
+	 * @return string
+	 */
+	protected function getRouteFile() {
+		return $this->files->get(__DIR__ . '/stubs/routes.stub');
 	}
 
 	/**
@@ -213,6 +234,7 @@ class PackageCreator {
 	}
 
 	/**
+	 * Create the apps directory and sub-directories
 	 * @param Package $package
 	 * @param         $directory
 	 */
