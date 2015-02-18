@@ -218,7 +218,7 @@ class PackageCreator {
 	 */
 	public function writePackageDirectories(Package $package, $directory) {
 		foreach (['Controllers', 'Events', 'Composers'] as $dir) {
-			$this->writePackageDirectory($package, '/' . $package->vendor . '/' . $package->name . '/' . $dir, $directory);
+			$this->writePackageDirectory($package, '/app/' . $dir, $directory);
 		}
 	}
 
@@ -334,7 +334,7 @@ class PackageCreator {
 	 * @return string
 	 */
 	protected function createClassDirectory(Package $package, $directory) {
-		$path = $directory . '/' . $package->vendor . '/' . $package->name . '/Providers';
+		$path = $directory . '/app/' . '/Providers';
 
 		if (!$this->files->isDirectory($path)) {
 			$this->files->makeDirectory($path, 0777, true);
