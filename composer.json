@@ -1,6 +1,6 @@
 {
-    "name": "illuminate/workbench",
-    "description": "The Illuminate Workbench package.",
+    "name": "bobbyzholmes/workbench",
+    "description": "Folk of the Illuminate Workbench package.",
     "license": "MIT",
     "authors": [
         {
