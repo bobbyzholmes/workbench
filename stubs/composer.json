@@ -16,7 +16,7 @@
             "migrations"
         ],
         "psr-4": {
-            "{{vendor}}\\{{name}}\\": ""
+            "{{vendor}}\\{{name}}\\": "app/"
         }
     },
     "minimum-stability": "stable"
