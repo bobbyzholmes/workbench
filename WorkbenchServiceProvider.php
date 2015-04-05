@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Workbench\Console\WorkbenchMakeCommand;
+use Illuminate\Workbench\Console\ControllerMakeCommand;
 
 class WorkbenchServiceProvider extends ServiceProvider {
 
@@ -24,15 +25,29 @@ class WorkbenchServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function register() {
+		$this->registerPackageCreator();
+		$this->registerWorkbenchGenerator();
+		$this->registerControllerGenerator();
+
+		$this->commands('command.workbench', 'command.workbench.make');
+	}
+
+	protected function registerPackageCreator(){
 		$this->app->singleton('package.creator', function ($app) {
 			return new PackageCreator($app['files']);
 		});
+	}
 
+	protected function registerWorkbenchGenerator(){
 		$this->app->singleton('command.workbench', function ($app) {
 			return new WorkbenchMakeCommand($app['package.creator']);
 		});
+	}
 
-		$this->commands('command.workbench');
+	protected function registerControllerGenerator(){
+		$this->app->singleton('command.workbench.make', function ($app) {
+			return new ControllerMakeCommand($app['files']);
+		});
 	}
 
 	/**
@@ -41,7 +56,7 @@ class WorkbenchServiceProvider extends ServiceProvider {
 	 * @return array
 	 */
 	public function provides() {
-		return ['package.creator', 'command.workbench'];
+		return ['package.creator', 'command.workbench', 'command.workbench.make'];
 	}
 
 }

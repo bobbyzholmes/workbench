@@ -1,0 +1,107 @@
+<?php namespace {{bench}}\Controllers;
+
+use {{rootNamespace}}Http\Requests;
+use {{rootNamespace}}Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+use View;
+
+class {{class}} extends Controller {
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()	{
+		return view('{{package}}::index');
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create() {
+		return view('{{package}}::create');
+	}
+
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function store()	{
+		//
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id) {
+		return view('{{package}}::show');
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id) {
+		return view('{{package}}::edit');
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id) {
+		//
+	}
+
+	/**
+	 * Marks item as deleted
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy($id) {
+		//Should use deleted at in model as soft delete
+	}
+
+	/**
+     * Show soft deleted items.
+     *
+     * @return View
+     */
+	public function trash(){
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage permanently.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function annihilate($id){
+        //
+    }
+
+    /**
+     * Marks item as being retored
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function restore($id) {
+        //
+    }
+
+}

@@ -13,7 +13,7 @@ class WorkbenchMakeCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'workbench';
+	protected $name = 'workbench:make';
 
 	/**
 	 * The console command description.
