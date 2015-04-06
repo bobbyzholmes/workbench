@@ -29,11 +29,6 @@ class WorkbenchServiceProvider extends ServiceProvider {
 		$this->registerWorkbenchGenerator();
 		$this->registerControllerGenerator();
 
-		$this->app->bindShared('vendorConfig', function(){
-			return new Config;
-			//use// App::make('vendorConfig')->getConfig("jigsaw", "$plugin::menu.navigation")
-		});
-
 		$this->commands('command.workbench', 'command.workbench.make');
 	}
 
