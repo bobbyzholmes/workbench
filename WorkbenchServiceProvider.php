@@ -3,6 +3,7 @@
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Workbench\Console\WorkbenchMakeCommand;
 use Illuminate\Workbench\Console\ControllerMakeCommand;
+use Illuminate\Workbench\Console\MigrationMakeCommand;
 
 class WorkbenchServiceProvider extends ServiceProvider {
 
@@ -29,7 +30,13 @@ class WorkbenchServiceProvider extends ServiceProvider {
 		$this->registerWorkbenchGenerator();
 		$this->registerControllerGenerator();
 
-		$this->commands('command.workbench', 'command.workbench.make');
+		$this->registerMigrationGenerator();
+
+		$this->commands(
+			'command.workbench',
+			'command.workbench.make',
+			'command.workbench.migration'
+		);
 	}
 
 	protected function registerPackageCreator(){
@@ -50,13 +57,24 @@ class WorkbenchServiceProvider extends ServiceProvider {
 		});
 	}
 
+	protected function registerMigrationGenerator(){
+		$this->app->singleton('command.workbench.migration', function ($app) {
+			return new MigrationMakeCommand($app['files']);
+		});
+	}
+
 	/**
 	 * Get the services provided by the provider.
 	 *
 	 * @return array
 	 */
 	public function provides() {
-		return ['package.creator', 'command.workbench', 'command.workbench.make'];
+		return [
+			'package.creator',
+			'command.workbench',
+			'command.workbench.make',
+			'command.workbench.migration'
+		];
 	}
 
 }
