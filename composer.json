@@ -1,11 +1,15 @@
 {
-    "name": "illuminate/workbench",
-    "description": "Folk of the Illuminate Workbench package.",
+    "name": "bobbyzholmes/workbench",
+    "description": "Customize laravel workbench package",
     "license": "MIT",
     "authors": [
         {
             "name": "Taylor Otwell",
             "email": "taylorotwell@gmail.com"
+        },
+        {
+            "name": "Bobby Holmes",
+            "email": "bobbyzholmes@gmail.com"
         }
     ],
     "require": {
