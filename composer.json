@@ -19,16 +19,11 @@
         "symfony/finder": "2.6.*"
     },
     "require-dev": {
-        "illuminate/console": "~5.0"
+        "illuminate/console": "5.*"
     },
     "autoload": {
         "psr-4": {
             "Illuminate\\Workbench\\": ""
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "5.0-dev"
         }
     },
     "minimum-stability": "stable"
