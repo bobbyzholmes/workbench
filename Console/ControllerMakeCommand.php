@@ -5,6 +5,8 @@ use Symfony\Component\Console\Input\InputOption;
 
 class ControllerMakeCommand extends GeneratorCommand {
 
+	use \Illuminate\Console\AppNamespaceDetectorTrait;
+
 	/**
 	 * The console command name.
 	 *
